@@ -4,7 +4,6 @@ import { Todo } from '@/types/todo';
 
 const todosCollection = collection(db, "todos");
 
-// Fetch todos from Firebase
 export const fetchTodos = async (userId: string): Promise<Todo[]> => {
   try {
     const q = query(todosCollection, where("userId", "==", userId));
@@ -23,7 +22,6 @@ export const fetchTodos = async (userId: string): Promise<Todo[]> => {
   }
 };
 
-// Add todo to Firebase
 export const addTodoToServer = async (todo: Omit<Todo, 'id'>, userId: string): Promise<string | null> => {
   try {
     const docRef = await addDoc(todosCollection, { 
@@ -40,7 +38,6 @@ export const addTodoToServer = async (todo: Omit<Todo, 'id'>, userId: string): P
   }
 };
 
-// Update todo in Firebase
 export const updateTodoInServer = async (id: string, updates: Partial<Todo>): Promise<boolean> => {
   try {
     const todoDoc = doc(db, 'todos', id);
@@ -52,7 +49,6 @@ export const updateTodoInServer = async (id: string, updates: Partial<Todo>): Pr
   }
 };
 
-// Delete todo from Firebase
 export const deleteTodoFromServer = async (id: string): Promise<boolean> => {
   try {
     const todoDoc = doc(db, 'todos', id);
@@ -64,7 +60,6 @@ export const deleteTodoFromServer = async (id: string): Promise<boolean> => {
   }
 };
 
-// Clear completed todos from Firebase
 export const clearCompletedTodosFromServer = async (todoIds: string[]): Promise<boolean> => {
   try {
     const deletePromises = todoIds.map(id => deleteDoc(doc(db, 'todos', id)));

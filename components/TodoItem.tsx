@@ -1,4 +1,4 @@
-import { Todo, TodoItemProps } from "@/types/todo"
+import { TodoItemProps } from "@/types/todo"
 import { View, Text, TouchableOpacity } from "react-native"
 import { useDispatch } from "react-redux"
 import { toggleTodoAsync } from "@/slices/todosSlice"

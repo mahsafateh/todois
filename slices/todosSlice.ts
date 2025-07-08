@@ -8,7 +8,6 @@ import {
     clearCompletedTodosFromServer 
 } from "@/services/itemService"
 
-// Async thunks for server operations
 export const loadTodos = createAsyncThunk(
     'todos/loadTodos',
     async (userId: string) => {
@@ -41,6 +40,7 @@ export const toggleTodoAsync = createAsyncThunk(
 export const clearCompletedAsync = createAsyncThunk(
     'todos/clearCompletedAsync',
     async (todoIds: string[]) => {
+        //deleteTodoFromServer TODO: Find out how to implement this method here.
         await clearCompletedTodosFromServer(todoIds);
         return todoIds;
     }
